@@ -1,0 +1,27 @@
+{
+  "name": "workflow",
+  "version": "1.0.0",
+  "description": "gulp automated workflow",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cubiio/workflow.git"
+  },
+  "keywords": [
+    "gulp"
+  ],
+  "author": "sam atkins",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cubiio/workflow/issues"
+  },
+  "homepage": "https://github.com/cubiio/workflow#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-notify": "^2.2.0",
+    "gulp-plumber": "^1.1.0"
+  }
+}
