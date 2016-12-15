@@ -13,6 +13,12 @@ const runSequence = require('run-sequence');
 const jshint = require('gulp-jshint');
 const jscs = require('gulp-jscs');
 const scssLint = require('gulp-scss-lint');
+const Server = require('karma').Server;
+const useref = require('gulp-useref');
+const uglify = require('gulp-uglify');
+const debug = require('gulp-debug');
+const cached = require('gulp-cached');
+const cssnano = require('gulp-cssnano');
 
 gulp.task('hello', function() {
 	return console.log('Hello World');
@@ -36,7 +42,7 @@ gulp.task('watch-js', ['lint:js'], browserSync.reload);
 
 gulp.task('watch', function() {
 	gulp.watch('app/scss/**/*.scss', ['sass', 'lint:scss']);
-	gulp.watch('app/scripts/**/*.js', ['watch-js']);
+	gulp.watch('app/js/**/*.js', ['watch-js']);
 	gulp.watch('app/*.html', browserSync.reload);
 });
 
@@ -108,7 +114,7 @@ gulp.task('default', function(callback) {
 });
 
 gulp.task('lint:js', function() {
-	return gulp.src('app/scripts/**/*.js')
+	return gulp.src('app/js/**/*.js')
 	.pipe(customPlumber('JSHint Error'))
 	.pipe(jshint())
 	.pipe(jshint.reporter('jshint-stylish'))
@@ -122,7 +128,7 @@ gulp.task('lint:js', function() {
 		fix: true,
 		configPath: '.jscsrc'
 	}))
-	.pipe(gulp.dest('app/scripts'))
+	.pipe(gulp.dest('app/js'))
 })
 
 gulp.task('lint:scss', function() {
@@ -131,3 +137,25 @@ gulp.task('lint:scss', function() {
 		config: '.scss-lint.yml'
 	}));
 });
+
+gulp.task('test', function(done) {
+	new Server({
+		configFile: process.cwd() + '/karma.conf.js',
+		singleRun: true
+	}, done).start();
+});
+
+gulp.task('useref', function() {	
+	return gulp.src('app/*.html')
+		.pipe(useref())
+		.pipe(cached('useref'))
+		.pipe(debug())
+		.pipe(gulpIf('*.js', uglify()))
+		.pipe(gulpIf('*.css', cssnano()))
+		.pipe(gulp.dest('dist'))
+});
+
+gulp.task('clean:dist', function (callback) {
+	return del.sync(['dist']);
+})
+
