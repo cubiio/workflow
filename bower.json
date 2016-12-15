@@ -1,0 +1,20 @@
+{
+  "name": "workflow",
+  "description": "gulp automated workflow",
+  "main": "main.js",
+  "authors": [
+    "sam atkins"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "gulp"
+  ],
+  "homepage": "https://github.com/cubiio/workflow",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
