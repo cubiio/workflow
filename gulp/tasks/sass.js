@@ -2,7 +2,9 @@
 const gulp = require('gulp');
 const $ = require('gulp-load-plugins')();
 const browserSync = require('browser-sync');
-const sass = require('gulp-sass');
+
+// gulp-sass throwing errors via load-plugins
+// const sass = require('gulp-sass');
 
 // require custom modules
 const customPlumber = require('../custom-modules/plumber');
@@ -17,7 +19,7 @@ gulp.task('sass', function() {
 	// checks for errors in all plugins
 	.pipe(customPlumber('Error running Sass'))
 	.pipe($.sourcemaps.init())
-	.pipe(sass().on('error', errorHandler))
+	.pipe($.sass().on('error', errorHandler))
 	.pipe($.autoprefixer())
 	.pipe($.sourcemaps.write())
 	.pipe(gulp.dest(config.sass.dest))
@@ -25,3 +27,4 @@ gulp.task('sass', function() {
 		stream: true
 	}));
 });
+
