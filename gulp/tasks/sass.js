@@ -3,9 +3,6 @@ const gulp = require('gulp');
 const $ = require('gulp-load-plugins')();
 const browserSync = require('browser-sync');
 
-// gulp-sass throwing errors via load-plugins
-// const sass = require('gulp-sass');
-
 // require custom modules
 const customPlumber = require('../custom-modules/plumber');
 const errorHandler = require('../custom-modules/plumber');

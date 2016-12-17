@@ -31,8 +31,8 @@ const config = {
 	},
 
 	sass: {
-		src: 'app/sass/**/*.scss',
-		dest: 'app/css',
+		src: 'app/scss/**/*.scss',
+		dest: 'app/css/',
 		options: {
 			includePaths: [
 				'app/bower_components',
