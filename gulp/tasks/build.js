@@ -1,7 +1,7 @@
 const gulp = require('gulp');
 const runSequence = require('run-sequence');
 
-gulp.task('build', function() {
+gulp.task('build', function(callback) {
 	runSequence(
 		['clean:dev', 'clean:dist'],
 		['sprites', 'lint:js', 'lint:scss'],

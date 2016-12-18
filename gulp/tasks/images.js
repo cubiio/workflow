@@ -1,5 +1,13 @@
 const gulp = require('gulp');
 
+const runSequence = require('run-sequence');
+const responsiveGm = require('gulp-responsive-images');
+const imagemin = require('gulp-imagemin');
+const cache = require('gulp-cache');
+const del = require('del');
+
+// require config
+const config = require('../config.js');
 
 // use GM then move to folder responsive
 gulp.task('imagesgm', function() {
@@ -55,9 +63,15 @@ gulp.task('cache:clear', function (callback) {
 	return cache.clearAll(callback)
 })
 
-// combo build task for responsive (gm) and min images
-gulp.task('build-images', function(callback) {
+// combo dev task for responsive (gm) and min images
+gulp.task('images', function(callback) {
     runSequence('imagesgm', ['imagesmin', 'copy-fixed-images'],
-        'responsive-tidy',
+        'clean:responsive',
         callback);
+});
+
+// 'build' task i.e. moves app/images to dist/images
+gulp.task('build-images', function() {
+    return gulp.src('./app/images/')
+        .pipe(gulp.dest('./dist/images/'));
 });
