@@ -15,10 +15,12 @@ bower_components
 jspm_packages
 
 # ignore generated files and folders
-.publish
-*.html
 *.css
 dist
+
+# ignore source and processing images
+app/images_src
+app/responsive
 
 # ignore creds
 secrets.json
