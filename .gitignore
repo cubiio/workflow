@@ -19,3 +19,6 @@ jspm_packages
 *.html
 *.css
 dist
+
+# ignore creds
+secrets.json

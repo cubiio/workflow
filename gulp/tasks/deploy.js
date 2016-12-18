@@ -1,9 +1,14 @@
 const gulp = require('gulp');
 const surge = require('gulp-surge');
 const browserSync = require('browser-sync');
+const rsync = require('rsyncwrapper').rsync;
+
 
 // require config
 const config = require('../config.js');
+
+// require creds
+const creds =  JSON.parse(fs.readFileSync('../../secrets.json'));
 
 // run dist in local server
 gulp.task('serve:dist', function() {
@@ -21,7 +26,7 @@ gulp.task('rsync', function() {
 	rsync({
 		src: 'dist/',
 		// keep dest in secrets.json
-		dest: creds.rsync.dest,
+		dest: creds.dest,
 		ssh: true,
 		recursive: true,
 		deleteAll: true
