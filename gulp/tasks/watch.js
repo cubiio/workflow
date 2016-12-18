@@ -1,6 +1,7 @@
 // require modules
-var gulp = require('gulp');
-var $ = require('gulp-load-plugins')();
+const gulp = require('gulp');
+const $ = require('gulp-load-plugins')();
+const browserSync = require('browser-sync');
 
 // require config
 const config = require('../config.js');

@@ -3,9 +3,13 @@ const requireDir = require('require-dir');
 // Require gulp tasks from task directory
 requireDir('./gulp/tasks/');
 
+
 /* ==========================================================================
 	move below tasks to separate task files
 ========================================================================== */
+
+// // require config
+// const config = require('./gulp/config.js');
 
 // const gulp = require('gulp');
 
@@ -41,25 +45,20 @@ requireDir('./gulp/tasks/');
 // test then delete
 // gulp.task('sass', function() {
 // 	return gulp.src('app/scss/**/*.scss')
+// 		return gulp.src(config.sass.src)
 // 	// checks for errors in all plugins
 // 	.pipe(customPlumber('Error running Sass'))
 // 	.pipe(sourcemaps.init())
 // 	.pipe(sass().on('error', errorHandler))
 // 	.pipe(autoprefixer())
 // 	.pipe(sourcemaps.write())
-// 	.pipe(gulp.dest('app/css'))
+// 	// .pipe(gulp.dest('app/css'))
+// 	.pipe(gulp.dest(config.sass.dest))
 // 	.pipe(browserSync.reload({
 // 		stream: true
 // 	}))
 // });
 
-// gulp.task('watch-js', ['lint:js'], browserSync.reload);
-
-// gulp.task('watch', function() {
-// 	gulp.watch('app/scss/**/*.scss', ['sass', 'lint:scss']);
-// 	gulp.watch('app/js/**/*.js', ['watch-js']);
-// 	gulp.watch('app/*.html', browserSync.reload);
-// });
 
 // function errorHandler(err) {
 // 	// Logs the error in the command line
@@ -78,6 +77,15 @@ requireDir('./gulp/tasks/');
 // 			})
 // 	});
 // }
+
+
+// gulp.task('watch-js', ['lint:js'], browserSync.reload);
+
+// gulp.task('watch', function() {
+// 	gulp.watch('app/scss/**/*.scss', ['sass', 'lint:scss']);
+// 	gulp.watch('app/js/**/*.js', ['watch-js']);
+// 	gulp.watch('app/*.html', browserSync.reload);
+// });
 
 // gulp.task('browserSync', function() {
 // 	browserSync ({

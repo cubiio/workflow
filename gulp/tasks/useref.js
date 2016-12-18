@@ -12,6 +12,9 @@ gulp.task('useref', function() {
 		.pipe($.debug())
 		.pipe($.if('*.js', $.uglify()))
 		.pipe($.if('*.css', $.cssnano()))
+		.pipe($.if('*.js', $.rev()))
+		.pipe($.if('*.css', $.rev()))
+		.pipe($.revReplace())
 		.pipe(gulp.dest(config.useref.dest))
 });
 

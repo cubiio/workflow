@@ -10,6 +10,6 @@ const config = require('../config.js');
 gulp.task('sprites', function() {
 	gulp.src(config.sprites.src)
 		.pipe(spritesmith(config.sprites.options))
-		.pipe(gulpIf('*.png', gulp.dest(config.sprites.imgDest)))
-		.pipe(gulpIf('*.scss', gulp.dest(config.sprites.scssDest)));
+		.pipe($.if('*.png', gulp.dest(config.sprites.imgDest)))
+		.pipe($.if('*.scss', gulp.dest(config.sprites.scssDest)));
 });
