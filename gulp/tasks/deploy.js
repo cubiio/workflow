@@ -2,6 +2,9 @@ const gulp = require('gulp');
 const surge = require('gulp-surge');
 const browserSync = require('browser-sync');
 
+// require config
+const config = require('../config.js');
+
 // run dist in local server
 gulp.task('serve:dist', function() {
 	browserSync.init({
@@ -34,7 +37,7 @@ gulp.task('rsync', function() {
 // deploy to surge.sh
 gulp.task('surge', [], function () {
   return surge({
-    project: 'dist/',                        // Path to dist directory
-    domain: 'http://add-name.surge.sh/'  // amend url
+  	config.surge.project,
+  	config.surge.domain
   })
 })

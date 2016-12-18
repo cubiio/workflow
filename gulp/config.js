@@ -62,6 +62,11 @@ const config = {
 		}
 	},
 
+	surge: {
+		project: 'dist/',                       // folder for Surge content
+		domain: 'http://add-name.surge.sh/'  		// amend url
+	},
+
 	useref: {
 		src: 'app/*.html',
 		dest: 'dist'
