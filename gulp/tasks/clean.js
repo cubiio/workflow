@@ -4,8 +4,7 @@ const del = require('del');
 // clean dev
 gulp.task('clean:dev', function() {
 	return del.sync([
-		'app/css/',
-		'app/*.html'
+		'app/css/'
 		]);
 });
 
