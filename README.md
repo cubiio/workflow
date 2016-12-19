@@ -8,7 +8,7 @@ Automated workflow using [Gulp.js](http://gulpjs.com/).
 
 Clone this git repo into the new project.
 
-```$ git clone workflow-remote-url```
+```$ git clone https://github.com/cubiio/workflow```
 
 Change the remote url to the new project remote url.
 
@@ -16,6 +16,8 @@ Change the remote url to the new project remote url.
 $ git remote remove origin
 $ git remote add origin url-to-new-git-repo
 ```
+
+If/when moving top level folder `workflow`, take care to also move `.hidden` files as well.
 
 ### Install dependencies
 
