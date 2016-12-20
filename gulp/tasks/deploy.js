@@ -8,8 +8,7 @@ const rsync = require('rsyncwrapper').rsync;
 const config = require('../config.js');
 
 // require creds
-// const creds =  JSON.parse(fs.readFileSync('../../secrets.json'));
-// const creds =  require('../../secrets.json');
+const creds =  require('/Users/samatkins/projects/info/secrets.json');
 
 // run dist in local server
 gulp.task('serve:dist', function() {
@@ -22,25 +21,25 @@ gulp.task('serve:dist', function() {
 	})
 })
 
-// rsync task
-// gulp.task('rsync', function() {
-// 	rsync({
-// 		src: 'dist/',
-// 		// keep dest in secrets.json
-// 		dest: creds.dest,
-// 		ssh: true,
-// 		recursive: true,
-// 		deleteAll: true
-// 	}, function(error, stdout, stderr, cmd) {
-// 		if (error) {
-// 			console.log(error.message);
-// 			console.log(stdout);
-// 			console.log(stderr);
-// 		}
-// 	});
-// })
+// rsync deploy to server 
+gulp.task('rsync', function() {
+	rsync({
+		src: 'dist/',
+		// amend dest path 
+		dest: creds.samat.dest,
+		ssh: true,
+		recursive: true,
+		deleteAll: true
+	}, function(error, stdout, stderr, cmd) {
+		if (error) {
+			console.log(error.message);
+			console.log(stdout);
+			console.log(stderr);
+		}
+	});
+})
 
-// deploy to surge.sh
+// deploy to surge.sh, change url in config 
 gulp.task('surge', [], function () {
   return surge({
 		project:	config.surge.project,

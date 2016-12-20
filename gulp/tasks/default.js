@@ -5,11 +5,8 @@ const runSequence = require('run-sequence');
 gulp.task('default', function(callback) {
 	runSequence(
 		'clean:dev', 
-
-		// toggle if vendor js causes issues:
-		// ['sprites', 'lint:js', 'lint:scss'],
+		['sprites', 'lint:js', 'lint:scss'],
 		['sprites', 'lint:scss'],
-		
 		['sass', 'images'],
 		['browserSync', 'watch'],
 		callback
