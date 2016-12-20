@@ -28,6 +28,16 @@ $ bower install
 $ npm install
 ```
 
+#### Check all dependencies are installed. 
+
+For example, `npm require-dir` is not a Gulp dependencie and may not be installed.
+
+**require-dir**
+
+```
+npm install --save-dev require-dir 
+```
+
 ### Update npm dependencies
 
 Check if packages need updating:
