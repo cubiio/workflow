@@ -2,6 +2,10 @@
 
 Automated workflow using [Gulp.js](http://gulpjs.com/).
 
+Superceded by this updated [version](https://github.com/cubiio/workflow_frontend_gn)
+
+***
+
 ## How to scaffold a project
 
 ### Clone files and folders
